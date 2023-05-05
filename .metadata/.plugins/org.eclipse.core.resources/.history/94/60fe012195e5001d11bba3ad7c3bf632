@@ -1,0 +1,86 @@
+package com.example.demo.service;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.StudentRepository;
+import com.example.demo.model.Student;
+@Service
+public class StudentService {
+	
+	@Autowired
+	StudentRepository studRepo;
+	
+	public List<Student>getAllStudents()
+	{
+		List<Student>studList=studRepo.findAll();
+		return studList;
+	}
+	public Student saveStudents(Student u)
+	{
+		return studRepo.save(u);
+	}
+	public Student updateStudents(Student u,int regno)
+	{
+		Optional<Student>optional=studRepo.findById(regno);
+		Student obj=null;
+		if(optional.isPresent())
+		{
+			obj=optional.get();
+			obj.setRegno(u.getRegno());
+			obj.setName(u.getName());
+			obj.setDept(u.getDept());
+			
+			studRepo.saveAndFlush(u);
+		}
+		return obj;
+	}
+	
+	public void deleteStudents(int regno)
+	{
+		studRepo.deleteById(regno);
+	}
+	public Student getStudents(int regno)
+	{
+		return studRepo.findById(regno).get();
+	}
+	public List<Student>sortStudents(String field)
+	{
+		return studRepo.findAll(SortBy(Direction.DESC,field));
+	}
+	public Sort SortBy(Direction desc, String field) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Student>pagingStudents(int offset,int  pageSize)
+	{
+		Page<Student>   obj= studRepo.findAll(PageRequest.of(offset, pageSize));
+		return obj.getContent();
+	}
+	public List<Student> paginate(int num, int size, String name) 
+	{
+		Page<Student> obj=studRepo.findAll(PageRequest.of(num, size,Sort.by(name).descending()));
+		return obj.getContent();
+	}
+	public  List<Student> fetchStudentsByNamePrefix(String prefix)
+	{
+		return studRepo.findByNameStartingWith(prefix);
+	}
+	public  List<Student> fetchStudentsByNameSuffix(String suffix)
+	{
+		return studRepo.findByNameEndingWith(suffix);
+	}
+	public  List<Student> findByDepartmentWith(String dept)
+	{
+		return studRepo.findByDepartmentWith(dept);
+	}
+	
+
+}

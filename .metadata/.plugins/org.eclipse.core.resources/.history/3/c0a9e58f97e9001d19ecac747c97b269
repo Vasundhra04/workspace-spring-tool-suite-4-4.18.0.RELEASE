@@ -1,0 +1,13 @@
+package com.example.demo.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.model.Addressnew;
+import com.example.demo.model.Personnew;
+
+public interface PersonnewRepository extends JpaRepository<Personnew,Long>
+{
+
+	
+ 
+}

@@ -1,0 +1,156 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Insta;
+
+import com.example.demo.service.InstaService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+@RestController
+public class InstaController {
+
+	@Autowired
+	InstaService tutService;
+	
+	
+	//http://localhost:8080/getTutor
+	@Tag(name="Vasundhra",description="pro")
+	@GetMapping(value="/getTutor")
+	public List<Insta>getAllTutors()
+	{
+		List<Insta>tutList=tutService.getAllTutors();
+		return tutList;
+	}
+	
+	//http://localhost:8080/saveTutor
+	@PostMapping(value="/saveTutor")
+	public Insta saveTutors(@RequestBody Insta u)
+	{
+		return tutService.saveTutors(u);
+	}
+	
+	//http://localhost:8080/updateTutor/
+	@PutMapping(value="/updateTutor/{phno}")
+	public Insta updateTutors(@RequestBody Insta u,@PathVariable ("phno") int phno)
+	{
+		return tutService.updateTutors(u,phno);
+	}
+	
+	//http://localhost:8080/deleteTutor/
+	@DeleteMapping(value="deleteTutor/{phno}")
+public void deleteTutors(@PathVariable("phno")int phno)
+	
+	{
+	    tutService.deleteTutors(phno);
+	}
+	
+	
+	@GetMapping(value="/getTutor/{phno}")
+	public Insta getTutors(@PathVariable("phno") int phno)
+	{
+		return tutService.getTutors(phno);
+	}
+	
+	//http://localhost:8080/sortStudents/emailid
+	@GetMapping("/sortStudents/{field}")
+	public List<Insta> sortTutors(@PathVariable String field)
+	{
+		
+		return tutService.sortTutors(field);
+	}
+	
+	//http://localhost:8080/pageStudents/0/3
+	@GetMapping(value="/pageStudents/{field}/{size}")
+	public List<Insta> pagingTutors(@PathVariable("field") int offset,@PathVariable("size") int  pageSize)
+	
+	{
+	 return tutService.pagingTutors(offset, pageSize);	
+	}
+	
+	
+	//http://localhost:8080/pagination/1/3/emailid
+	@GetMapping("pagination/{nm}/{sp}/{inr}")
+	public List<Insta> paginate(@PathVariable("nm") int num,@PathVariable("sp") int size,@PathVariable("inr") String name)
+	{
+		return tutService.paginate(num,size,name);
+	}
+	
+	//http://localhost:8080/fetchStudentsbynameprefix?prefix=a
+	@GetMapping("/fetchStudentsbynameprefix")
+	public List<Insta> fetchByUsernamePrefix(@RequestParam String prefix)
+	{
+		return tutService.fetchByUsernamePrefix(prefix);
+	}
+	
+	//http://localhost:8080/fetchStudentsbynamesuffix?suffix=a
+	@GetMapping("/fetchStudentsbynamesuffix")
+	public List<Insta> fetchByUsernameSuffix(@RequestParam String suffix)
+	{
+		return tutService.fetchByUsernameSuffix(suffix);
+	}
+	
+	//http://localhost:8080/findByBft?bft=Yes
+	@GetMapping("/findByBft")
+	public List<Insta> findByBft(@RequestParam String bft)
+	{
+		return tutService.findByBft(bft);
+	}
+	
+	//http://localhost:8080/fetchInstaByEmailid/a@gamil.com/Vasundhra
+	@GetMapping("/fetchInstaByEmailid/{emailid}/{username}")
+	public List<Insta> fetchInstaByEmailid(@PathVariable 
+			String emailid,@PathVariable String username)
+	{
+		return tutService.getInstaByEmailid(emailid, username);
+	}
+	
+	//http://localhost:8080/getInstaByUsername?username=Vasundhra
+	@GetMapping("/getInstaByUsername")
+	public List<Insta>  getInstaByUsername(@RequestParam String username)
+	{
+		return tutService.getInstaByUsername(username);
+	}
+	
+	
+    //http://localhost:8080/deleteInstaByUsername?username=Subha
+	@DeleteMapping("/deleteInstaByUsername")
+	public String deleteInstaByUsername(String username)
+	{
+		int result=tutService.deleteInstaByUsername(username);
+		if(result>0)
+			
+			return "Insta record deleted";
+		
+		else
+			
+			return "Problem occured while deleting";
+		
+	}
+	
+	//http://localhost:8080/updateInstaByUsername/6543/Nirmala
+	@PutMapping("/updateInstaByUsername/{phno}/{username}")
+    public int updateInstaByUsername(@PathVariable int phno,@PathVariable String username)
+    {
+ 	   return tutService.updateInstaByUsername(phno,username);
+    }
+	
+	@GetMapping("/fetchInstaByPhno/{phno}")
+	public List<Insta> fetchInstaByPhno(@PathVariable int phno)
+	{
+		return tutService.fetchInstaByPhno(phno);
+		
+	}
+	
+	
+}

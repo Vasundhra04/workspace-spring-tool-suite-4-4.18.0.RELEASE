@@ -1,0 +1,5 @@
+package com.example.newproject.repository;
+
+public interface PerRepository {
+
+}

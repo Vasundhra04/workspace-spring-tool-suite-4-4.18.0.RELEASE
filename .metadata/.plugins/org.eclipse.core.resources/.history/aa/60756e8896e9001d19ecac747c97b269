@@ -1,0 +1,25 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.PersonnewRepository;
+import com.example.demo.model.Personnew;
+
+@Service
+public class AddressPersonService {
+	
+	@Autowired
+	PersonnewRepository perRepo;
+	public List<Personnew> fetchAllPersons()
+	   {
+		   return perRepo.findAll();
+	   }
+    public Personnew savePersons(Personnew p)
+	   {
+		   return perRepo.save(p);
+	   }
+
+}
