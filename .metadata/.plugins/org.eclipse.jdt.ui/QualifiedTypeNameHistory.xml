@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
@@ -27,7 +26,6 @@
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort"/>
     <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="com.example.demo.dao.LoginRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Login"/>
     <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
@@ -41,7 +39,6 @@
     <fullyQualifiedTypeName name="com.example.demo.model.Addressnew"/>
     <fullyQualifiedTypeName name="com.example.demo.dao.AddressnewRepository"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
     <fullyQualifiedTypeName name="com.example.newproject.repository.CarRepository"/>
     <fullyQualifiedTypeName name="com.example.newproject.service.CarService"/>
     <fullyQualifiedTypeName name="com.example.newproject.model.Car"/>
@@ -50,4 +47,10 @@
     <fullyQualifiedTypeName name="com.example.newproject.model.Add"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.tags.Tag"/>
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.OpenAPIDefinition"/>
+    <fullyQualifiedTypeName name="com.example.Crudproject.Service.CrudService"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="com.example.Crudproject.Models.Crud"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
+    <fullyQualifiedTypeName name="com.example.Crudproject.Repository.CrudRepository"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
 </qualifiedTypeNameHistroy>
