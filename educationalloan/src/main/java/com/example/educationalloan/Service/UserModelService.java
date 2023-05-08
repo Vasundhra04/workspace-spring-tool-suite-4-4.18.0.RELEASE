@@ -52,6 +52,15 @@ public class UserModelService {
 		return gbi;
 		
 	}
+	public UserModel updateInfo(UserModel u)
+	{
+		return userRep.saveAndFlush(u);
+	}
+	
+	public void deleteInfo(int sno)
+		{
+			userRep.deleteById(sno);
+		}
 	
 
 
